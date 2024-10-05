@@ -1,0 +1,46 @@
+
+body{
+    background-color: rgb(21, 21, 21);
+    font-family: sans-serif;
+    color: rgb(235, 236, 237);
+    
+    
+}
+.container{
+    margin: 0 auto;
+   align-self: center;
+    padding: 1em 2em;
+    background-color: rgb(45, 46, 46);
+    border: none;
+    border-radius: 5%;
+    position: relative;
+    height: 29%;
+    width: 28%;
+    
+}
+
+.container::after{
+    
+    content:'';
+    position: absolute;
+    height: 103%;
+    width: 104%;
+    border-radius: 6%;
+    background-color: aqua;
+    top:-1.5%;
+    left:-2%;
+    right:-1.5%;
+    bottom:0%;
+    background-image: linear-gradient(to bottom right, rgb(37, 175, 206),rgb(125, 0, 221));
+    z-index:-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.element{
+    display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;
+}
