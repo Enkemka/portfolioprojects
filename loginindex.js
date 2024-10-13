@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 const apiKey = "f8b1a5d13848ffa0ad8bbcdecc89a74c";
 
-function convertToF(num){
-    return Math.round((num-273.15)*1.8+32);
-    
-}
+
+
+
+
 
 async function getData(locationName){
     try{
@@ -31,10 +31,10 @@ async function getData(locationName){
     
     
 
-    document.getElementById("temperature").textContent=`${convertToF(temperature)} ℉`;
+    document.getElementById("temperature").textContent=`${convertFromKelvinToF(temperature)} F`;
     document.getElementById("conditions").textContent=conditions;
-    document.getElementById("high").textContent=`${convertToF(high)} ℉`;
-    document.getElementById("low").textContent=`${convertToF(low)} ℉`;
+    document.getElementById("high").textContent=`${convertFromKelvinToF(high)} F`;
+    document.getElementById("low").textContent=`${convertFromKelvinToF(low)} F`;
    
         if(!response.ok)(
             console.log("data not found")
@@ -46,11 +46,35 @@ async function getData(locationName){
    
 }
 
+document.getElementById("press").addEventListener("click",()=>{
+    let degrees = document.getElementById("temperature").textContent;
+        if(degrees.charAt(degrees.length - 1)=="F"){
+            degrees = degrees.slice(0, -1);
+            document.getElementById("temperature").textContent=`${convertToC(degrees)}C`;
+            return 0;
+        }
+        degrees = degrees.slice(0, -1);
+        document.getElementById("temperature").textContent=`${convertToF(degrees)}F`;
+}
+);
+
+function convertFromKelvinToF(num){
+    return Math.round((num-273.15)*1.8+32);
+    
+}
+
+function convertToF(num){
+    return Math.round((num * 1.8) + 32);
+    
+}
+
+
 
 
 
 function convertToC(num){
-    return (num-32)*5/9;
+    num = (num-32)*5/9;
+    return num;
     
 }
 
